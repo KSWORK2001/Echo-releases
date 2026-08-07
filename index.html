@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Echo — the layer above your work</title>
+    <meta
+      name="description"
+      content="Echo floats over whatever you're doing. It drafts what to say on a call, keeps your task list in the corner, and drives your mouse and keyboard through routines you'd rather not do yourself. Free, for Windows, macOS and Linux."
+    />
+    <link rel="icon" href="/Echo-releases/favicon.png" />
+    <meta name="theme-color" content="#EDF0EE" />
+    <meta property="og:title" content="Echo — the layer above your work" />
+    <meta
+      property="og:description"
+      content="A desktop copilot for meetings, focus, and the busywork in between. Runs on your machine. Free."
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      // Scroll reveals are an enhancement, never a requirement. The hidden
+      // state is scoped to .js, so if this script or main.js never runs the
+      // page is simply visible rather than blank.
+      document.documentElement.classList.add("js");
+    </script>
+    <script type="module" crossorigin src="/Echo-releases/assets/index-C5WD04yz.js"></script>
+    <link rel="stylesheet" crossorigin href="/Echo-releases/assets/index-CggvZEhk.css">
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!--
+      The site's navigation is a recreation of Echo's own floating bar: the
+      `main` window, 600x54, frameless, always on top, pinned to the top of
+      the screen. It behaves the way the real one does, so the product's most
+      recognisable surface is the thing you steer the page with.
+    -->
+    <header class="bar" id="bar">
+      <div class="bar__inner">
+        <img
+          class="bar__mark"
+          src="/Echo-releases/echo-logo.png"
+          alt=""
+          width="256"
+          height="256"
+          decoding="async"
+        />
+        <span class="bar__word">Echo</span>
+
+        <nav class="bar__nav" aria-label="Sections">
+          <a href="#meetings">Meetings</a>
+          <a href="#focus">Focus</a>
+          <a href="#ping">Ping</a>
+          <a href="#local">Your machine</a>
+        </nav>
+
+        <a class="bar__cta" href="#get">
+          Download
+          <span class="bar__ver">2.0</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ── Hero ─────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="wrap hero__grid">
+          <div class="hero__lede">
+            <p class="eyebrow" data-reveal>
+              <span class="rule"></span>Desktop copilot
+            </p>
+            <h1 class="hero__h" data-reveal>
+              The layer above<br />your work.
+            </h1>
+            <p class="hero__sub" data-reveal>
+              Echo floats over whatever you already have open. It drafts what to
+              say on a call, keeps your task list in the corner while you focus,
+              and drives your mouse and keyboard through the routines you would
+              rather not do yourself.
+            </p>
+
+            <div class="hero__actions" data-reveal>
+              <a class="btn btn--solid" href="#get">
+                Download for free
+                <svg viewBox="0 0 16 16" aria-hidden="true" class="btn__i">
+                  <path
+                    d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13h12"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a class="btn btn--ghost" href="#ping">See it drive a computer</a>
+            </div>
+
+            <p class="hero__meta" data-reveal>
+              Windows, macOS 10.13+, Linux. No account, no key, no trial.
+            </p>
+          </div>
+
+          <!--
+            The floating bar as it actually appears mid-meeting, over the
+            document you are sharing.
+          -->
+          <div class="hero__stage" data-reveal>
+            <div class="paper-doc" aria-hidden="true">
+              <span class="paper-doc__l" style="--w: 72%"></span>
+              <span class="paper-doc__l" style="--w: 94%"></span>
+              <span class="paper-doc__l" style="--w: 61%"></span>
+              <span class="paper-doc__l" style="--w: 88%"></span>
+              <span class="paper-doc__l" style="--w: 45%"></span>
+              <span class="paper-doc__l" style="--w: 79%"></span>
+            </div>
+
+            <figure class="win win--float">
+              <div class="win__chrome">
+                <span class="chip chip--live">
+                  <span class="dot"></span>Listening
+                </span>
+                <span class="win__field" id="rotator" aria-live="polite"
+                  >What should I say next?</span
+                >
+                <span class="win__keys">
+                  <kbd>⌥</kbd><kbd>Space</kbd>
+                </span>
+              </div>
+            </figure>
+
+            <figure class="win win--reply">
+              <figcaption class="win__cap">Draft reply</figcaption>
+              <p class="win__body">
+                Their Q3 number was <em>flat, not down</em>. Ask what changed in
+                the pipeline after the pricing test before agreeing to the
+                discount.
+              </p>
+              <span class="win__foot">from the last 4 minutes of transcript</span>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Three modes ──────────────────────────────────────────── -->
+      <section class="modes wrap">
+        <p class="eyebrow" data-reveal><span class="rule"></span>Three modes, one app</p>
+        <div class="modes__row">
+          <article class="mode" data-reveal>
+            <h3>Meetings</h3>
+            <p>
+              Captures the call and your microphone at once, labels who said
+              what, and answers only when you tap.
+            </p>
+          </article>
+          <article class="mode" data-reveal>
+            <h3>Focus</h3>
+            <p>
+              A translucent task list in the corner of the screen, driven
+              entirely from the keyboard.
+            </p>
+          </article>
+          <article class="mode" data-reveal>
+            <h3>Ping</h3>
+            <p>
+              Describe a routine and Echo works through it on your desktop,
+              clicking and typing like you would.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── Meetings ─────────────────────────────────────────────── -->
+      <section class="sec" id="meetings">
+        <div class="wrap sec__grid">
+          <div class="sec__copy">
+            <p class="eyebrow" data-reveal><span class="rule"></span>Meeting mode</p>
+            <h2 class="sec__h" data-reveal>
+              It listens the whole time. It speaks when you ask.
+            </h2>
+            <p class="sec__p" data-reveal>
+              Transcription runs continuously so nothing is missed, but the model
+              is never called on its own. It answers on a quick action, with the
+              live transcript attached, so nothing leaves your machine because a
+              timer went off.
+            </p>
+            <ul class="facts" data-reveal>
+              <li>
+                <b>Two streams, kept apart.</b> System audio and your microphone
+                are captured separately, so the transcript knows the difference
+                between you and the room.
+              </li>
+              <li>
+                <b>It stops when you start.</b> Begin speaking mid-answer and the
+                reply halts rather than talking over you.
+              </li>
+              <li>
+                <b>The call ends with a list.</b> Action items and ticket drafts
+                are pulled from the transcript, ready to edit or push to GitHub
+                and Jira.
+              </li>
+            </ul>
+          </div>
+
+          <div class="sec__art" data-reveal>
+            <figure class="win win--tall">
+              <div class="win__bar">
+                <span class="chip chip--live"><span class="dot"></span>04:12</span>
+                <span class="win__title">Transcript</span>
+              </div>
+              <ol class="script">
+                <li class="script__l script__l--them">
+                  <span class="who">Speaker</span>
+                  <span>We can look at the annual number, but not this quarter.</span>
+                </li>
+                <li class="script__l script__l--you">
+                  <span class="who who--you">You</span>
+                  <span>That works. What would need to be true for Q3?</span>
+                </li>
+                <li class="script__l script__l--them">
+                  <span class="who">Speaker</span>
+                  <span>Honestly, procurement signing off before the freeze.</span>
+                </li>
+              </ol>
+              <div class="win__split">
+                <span class="tag tag--amber">action item</span>
+                <p>Send the security review to procurement before Friday.</p>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Focus ────────────────────────────────────────────────── -->
+      <section class="sec sec--alt" id="focus">
+        <div class="wrap sec__grid sec__grid--flip">
+          <div class="sec__copy">
+            <p class="eyebrow" data-reveal><span class="rule"></span>Focus mode</p>
+            <h2 class="sec__h" data-reveal>A task list that never takes the screen.</h2>
+            <p class="sec__p" data-reveal>
+              The bar is replaced by a translucent panel pinned to the corner of
+              your primary display. You can run the whole thing without reaching
+              for the mouse, and dim it until it nearly disappears.
+            </p>
+            <div class="keys" data-reveal>
+              <div class="keys__r">
+                <span><kbd>↑</kbd><kbd>↓</kbd></span><span>move between tasks</span>
+              </div>
+              <div class="keys__r">
+                <span><kbd>Enter</kbd></span><span>mark it done</span>
+              </div>
+              <div class="keys__r">
+                <span><kbd>U</kbd></span><span>undo that</span>
+              </div>
+              <div class="keys__r">
+                <span><kbd>Ctrl</kbd><kbd>[</kbd></span><span>fade the panel back</span>
+              </div>
+            </div>
+            <p class="sec__p sec__p--small" data-reveal>
+              Anything Echo pulled out of a meeting lands here once you approve
+              it, so the call and the work are the same list.
+            </p>
+          </div>
+
+          <div class="sec__art" data-reveal>
+            <figure class="win win--task">
+              <div class="win__bar">
+                <span class="win__title">Today</span>
+                <span class="win__streak">4 done</span>
+              </div>
+              <ul class="tasks">
+                <li class="task task--on">
+                  <span class="task__pri task__pri--hi"></span>
+                  Send security review to procurement
+                  <span class="task__due">Fri</span>
+                </li>
+                <li class="task">
+                  <span class="task__pri task__pri--hi"></span>
+                  Rewrite the pricing objection doc
+                </li>
+                <li class="task">
+                  <span class="task__pri task__pri--md"></span>
+                  Reply to the Figma thread
+                  <span class="task__due">Mon</span>
+                </li>
+                <li class="task task--done">
+                  <span class="task__pri"></span>
+                  Approve the Q3 forecast
+                </li>
+              </ul>
+              <div class="win__foot win__foot--pad">
+                <span class="eq" aria-hidden="true"
+                  ><i></i><i></i><i></i><i></i></span
+                >
+                lofi, deep focus
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Ping ─────────────────────────────────────────────────── -->
+      <section class="sec sec--dark" id="ping">
+        <div class="wrap">
+          <div class="ping__head">
+            <p class="eyebrow eyebrow--on-dark" data-reveal>
+              <span class="rule"></span>Ping
+            </p>
+            <h2 class="sec__h sec__h--on-dark" data-reveal>
+              Hand it the mouse. Take it back whenever.
+            </h2>
+            <p class="sec__p sec__p--on-dark" data-reveal>
+              Describe a routine in a sentence. Echo screenshots the desktop,
+              decides on one action, performs it, then checks the screen actually
+              changed before deciding again. Every step shows its reasoning as it
+              happens.
+            </p>
+          </div>
+
+          <!-- The agent loop is a genuine sequence, so it is numbered. -->
+          <ol class="loop" data-reveal>
+            <li class="loop__s">
+              <span class="loop__n">1</span>
+              <b>Look</b>
+              <p>Captures the screen and marks where the cursor really is.</p>
+            </li>
+            <li class="loop__s">
+              <span class="loop__n">2</span>
+              <b>Decide</b>
+              <p>Returns exactly one action, and the reason for it.</p>
+            </li>
+            <li class="loop__s">
+              <span class="loop__n">3</span>
+              <b>Act</b>
+              <p>Clicks the element itself when the app exposes one.</p>
+            </li>
+            <li class="loop__s">
+              <span class="loop__n">4</span>
+              <b>Verify</b>
+              <p>Confirms the screen moved, or says so and changes route.</p>
+            </li>
+          </ol>
+
+          <div class="ping__grid">
+            <figure class="win win--feed" data-reveal>
+              <div class="win__bar win__bar--feed">
+                <span class="chip chip--run"><span class="dot"></span>Running</span>
+                <span class="win__title">File the weekly expenses</span>
+                <span class="win__step">step 7</span>
+              </div>
+              <ol class="feed" id="feed">
+                <li class="feed__i">
+                  <span class="feed__a">launch</span>
+                  <p>Expense portal was not open, so nothing to click yet.</p>
+                </li>
+                <li class="feed__i">
+                  <span class="feed__a">click_element</span>
+                  <p>"New report" is the only route to the upload form.</p>
+                </li>
+                <li class="feed__i">
+                  <span class="feed__a">set_text</span>
+                  <p>Filled the title field directly, no keyboard needed.</p>
+                </li>
+                <li class="feed__i feed__i--wait">
+                  <span class="feed__a">paused</span>
+                  <p>You touched the mouse. Waiting until you are done.</p>
+                </li>
+              </ol>
+            </figure>
+
+            <div class="ping__side">
+              <article class="note" data-reveal>
+                <h4>It gives the cursor back</h4>
+                <p>
+                  A physical click reads where your pointer was and puts it
+                  straight back, about a tenth of a millisecond later. Your
+                  desktop does not end up somewhere you did not leave it.
+                </p>
+              </article>
+              <article class="note" data-reveal>
+                <h4>It yields to you</h4>
+                <p>
+                  Touch your own keyboard or mouse and the run pauses before its
+                  next action, then picks up once you have stopped. Pause long
+                  enough and it takes a fresh screenshot rather than acting on a
+                  stale one.
+                </p>
+              </article>
+              <article class="note note--stop" data-reveal>
+                <h4>It stops dead</h4>
+                <p>
+                  <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>Esc</kbd> ends any run
+                  instantly, on Windows and macOS, whatever it is in the middle
+                  of.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- ── Workflow map ─────────────────────────────────────── -->
+          <div class="map" data-reveal>
+            <div class="map__copy">
+              <h3>Chain the routines together</h3>
+              <p>
+                Drag from one routine to the next and the second fires when the
+                first finishes, on success, on failure, or either way. Drop in a
+                wait, a message, or a hold until a set time. Everything queues
+                through one lane, because there is only one desktop.
+              </p>
+            </div>
+            <div class="map__canvas" aria-hidden="true">
+              <svg viewBox="0 0 520 210" class="map__svg">
+                <defs>
+                  <marker
+                    id="ar"
+                    viewBox="0 0 8 8"
+                    refX="7"
+                    refY="4"
+                    markerWidth="7"
+                    markerHeight="7"
+                    orient="auto"
+                  >
+                    <path d="M0 0 L8 4 L0 8 z" fill="var(--signal)" />
+                  </marker>
+                  <marker
+                    id="ar-a"
+                    viewBox="0 0 8 8"
+                    refX="7"
+                    refY="4"
+                    markerWidth="7"
+                    markerHeight="7"
+                    orient="auto"
+                  >
+                    <path d="M0 0 L8 4 L0 8 z" fill="var(--amber)" />
+                  </marker>
+                </defs>
+                <path
+                  class="edge edge--flow"
+                  d="M150 62 C200 62, 210 62, 260 62"
+                  marker-end="url(#ar)"
+                />
+                <path
+                  class="edge edge--amber"
+                  d="M150 74 C200 74, 210 150, 260 150"
+                  marker-end="url(#ar-a)"
+                />
+                <path
+                  class="edge"
+                  d="M370 62 C410 62, 420 105, 455 105"
+                  marker-end="url(#ar)"
+                />
+              </svg>
+              <span class="node node--a">Pull invoices</span>
+              <span class="node node--b">File expenses</span>
+              <span class="node node--c node--block">Wait 15m</span>
+              <span class="node node--d node--end">Post summary</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Local ────────────────────────────────────────────────── -->
+      <section class="sec" id="local">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal><span class="rule"></span>Your machine</p>
+          <h2 class="sec__h sec__h--wide" data-reveal>
+            The parts that would normally cost you a subscription run locally.
+          </h2>
+
+          <div class="spec">
+            <div class="spec__r" data-reveal>
+              <span class="spec__k">Speech</span>
+              <span class="spec__v">
+                <b>On device.</b> A 0.6B-parameter speech model runs on your own
+                machine, so a recording does not have to leave it to become a
+                transcript.
+              </span>
+            </div>
+            <div class="spec__r" data-reveal>
+              <span class="spec__k">AI</span>
+              <span class="spec__v">
+                <b>Your account.</b> Replies go through your own Claude
+                subscription, or any provider you point it at with your own key.
+                There is no meter in between.
+              </span>
+            </div>
+            <div class="spec__r" data-reveal>
+              <span class="spec__k">History</span>
+              <span class="spec__v">
+                <b>A file you own.</b> Conversations, tasks and routines live in
+                a local database on your disk.
+              </span>
+            </div>
+            <div class="spec__r" data-reveal>
+              <span class="spec__k">Keys</span>
+              <span class="spec__v">
+                <b>System keychain.</b> Tokens and API keys sit where your
+                browser keeps its passwords, not in app storage.
+              </span>
+            </div>
+            <div class="spec__r" data-reveal>
+              <span class="spec__k">Capture</span>
+              <span class="spec__v">
+                <b>Invisible to it.</b> Echo's windows are hidden from screen
+                capture, so sharing your screen does not share Echo.
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Download ─────────────────────────────────────────────── -->
+      <section class="get" id="get">
+        <div class="wrap get__inner">
+          <h2 class="get__h" data-reveal>Free. No account.</h2>
+          <p class="get__p" data-reveal>
+            Nothing to sign up for and no key to enter. Install it and it
+            updates itself from there.
+          </p>
+          <a
+            class="btn btn--solid btn--lg"
+            href="https://github.com/KSWORK2001/Echo-releases/releases/latest"
+            data-reveal
+          >
+            Download Echo 2.0
+            <svg viewBox="0 0 16 16" aria-hidden="true" class="btn__i">
+              <path
+                d="M8 1v9m0 0L4.5 6.5M8 10l3.5-3.5M2 13h12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <p class="get__os" data-reveal>
+            <span>Windows</span><i></i><span>macOS 10.13+</span><i></i
+            ><span>Linux</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot__inner">
+        <span class="foot__brand">
+          <img
+            class="foot__mark"
+            src="/Echo-releases/echo-logo.png"
+            alt=""
+            width="256"
+            height="256"
+            decoding="async"
+          />
+          <span class="foot__word">Echo</span>
+        </span>
+        <nav class="foot__nav" aria-label="Footer">
+          <a href="https://github.com/KSWORK2001/Echo-releases/releases/latest"
+            >Releases</a
+          >
+          <a href="mailto:work.karan2001@gmail.com">Support</a>
+          <a href="https://kswork2001.github.io/portfolio">Who made this</a>
+        </nav>
+        <span class="foot__c">© 2026 Karan Shrivastava</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
