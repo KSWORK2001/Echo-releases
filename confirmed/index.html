@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Echo &middot; Account</title>
+<link rel="icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600&family=JetBrains+Mono:wght@500&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Tokens lifted from the Echo site one directory up: the page is paper,
+     color only appears inside the dark window chrome. */
+  :root {
+    --paper: #edf0ee;
+    --chrome: #141b18;
+    --chrome-2: #1d2621;
+    --chrome-line: #ffffff17;
+    --tx-3: #55625c;
+    --tx-on-dark: #e6ebe8;
+    --tx-on-dark-2: #97a49d;
+    --signal: #22c55e;
+    --amber: #f59e0b;
+    --fail: #fb7185;
+    --lift-2: 0 1px 2px #0c131014, 0 10px 28px -8px #0c131033,
+      0 28px 68px -18px #0c13103d;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--paper);
+    font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+  }
+  .win {
+    width: min(430px, 100%);
+    background: var(--chrome);
+    border: 1px solid var(--chrome-line);
+    border-radius: 14px;
+    box-shadow: var(--lift-2);
+    color: var(--tx-on-dark);
+    overflow: hidden;
+  }
+  .win__bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.7rem 1rem;
+    background: var(--chrome-2);
+    border-bottom: 1px solid var(--chrome-line);
+  }
+  .win__dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.16); }
+  .win__title {
+    margin-left: 0.35rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tx-on-dark-2);
+  }
+  .win__body { padding: 1.6rem 1.5rem 1.7rem; }
+  .state {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tx-on-dark-2);
+    margin-bottom: 0.9rem;
+  }
+  .state__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--signal); }
+  h1 {
+    font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+  p { font-size: 0.92rem; line-height: 1.55; color: var(--tx-on-dark-2); }
+  .foot {
+    margin-top: 1.1rem;
+    text-align: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tx-3);
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="win">
+    <div class="win__bar">
+      <span class="win__dot"></span><span class="win__dot"></span><span class="win__dot"></span>
+      <span class="win__title">Echo &middot; Account</span>
+    </div>
+    <div class="win__body">
+      <span class="state"><span class="state__dot" id="dot"></span><span id="state">Confirmed</span></span>
+      <h1 id="title">You're all set</h1>
+      <p id="msg">You can close this tab and head back to Echo.</p>
+    </div>
+  </div>
+  <p class="foot">Nothing else leaves your machine</p>
+</main>
+<script>
+  (function () {
+    var hash = new URLSearchParams(location.hash.replace(/^#/, ""));
+    var query = new URLSearchParams(location.search);
+    var type = hash.get("type") || query.get("type");
+    var error = hash.get("error_description") || query.get("error_description") ||
+      hash.get("error") || query.get("error");
+
+    var dot = document.getElementById("dot");
+    var state = document.getElementById("state");
+    var title = document.getElementById("title");
+    var msg = document.getElementById("msg");
+
+    if (error) {
+      dot.style.background = "var(--fail)";
+      state.textContent = "Link failed";
+      title.textContent = "That link didn't work";
+      msg.textContent = decodeURIComponent(String(error).replace(/\+/g, " ")) +
+        ". Open the sign-in dialog in Echo and request a fresh email.";
+    } else if (type === "recovery") {
+      dot.style.background = "var(--amber)";
+      state.textContent = "Password reset";
+      title.textContent = "Finish up in Echo";
+      msg.textContent = "Head back to the app and enter the 6-digit code from the same email along with your new password.";
+    } else if (type) {
+      state.textContent = "Confirmed";
+      title.textContent = "Email confirmed";
+      msg.textContent = "Your Echo account is ready. Head back to the app and sign in.";
+    }
+
+    // The fragment can carry session tokens. They are useless to this page,
+    // so wipe them from the address bar and history.
+    if (location.hash || location.search) {
+      history.replaceState(null, "", location.pathname);
+    }
+  })();
+</script>
+</body>
+</html>
