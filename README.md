@@ -1,7 +1,7 @@
 <a id="guide-top"></a>
 
 <div align="center">
-  <img src="images/Echo.png" alt="Echo" width="640" />
+  <img src="Echo.png" alt="Echo" width="640" />
 
   <p>
     <strong>Echo helps you think and respond during meetings, then gets out of the way so you can focus.</strong>
